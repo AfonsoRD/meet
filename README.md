@@ -5,6 +5,14 @@
 This project is a meeting app to display events around you and meet your friends.
 The objective is to build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
 
+**Serverless Infrastructure**
+
+Meet app
+
+- Frontend: JavaScript/React; hosted on GitHub Pages.
+- Backend: Node/Express as Lambda functions (FaaS); hosted on AWS.
+- Backend (Database): Google Calendar API.
+
 ## Key Features
 
 Filter events by city.
@@ -14,35 +22,15 @@ Use the app when offline.
 Add an app shortcut to the home screen.
 View a chart showing the number of upcoming events by city.
 
-#### User Stories
+#### Scenarios
+
+**FILTER EVENTS BY CITY**
+
+**User Story**
 
 As a user,
 I should be able to **filter events by city**.
 So that I can see the list of events that take place in that city.
-
-As user,
-I should be able to **show/hide an event's details**.
-So that I can see the details of the events displayed.
-
-As user,
-I should be able to **specify the number of events**.
-So that I can have an overview about how many events are active in that search.
-
-As user,
-I should be able to **have the app available offline**.
-So that I can use the app without internet.
-
-As user,
-I should be able to **add an app shortcut to my home screen**.
-So that I can reach the app easily and faster.
-
-As user,
-I should be able to **display a chart showing the number of upcoming events by city.**
-So that I can track my events and organize my time.
-
-#### Scenarios
-
-**FILTER EVENTS BY CITY**
 
 **Scenario 1:** When user hasn’t searched for a city, show upcoming events from all cities.
 
@@ -63,6 +51,12 @@ So that I can track my events and organize my time.
 
 **SHOW/HIDE AN EVENT’S DETAILS**
 
+**User Story**
+
+As user,
+I should be able to **show/hide an event's details**.
+So that I can see the details of the events displayed.
+
 **Scenario 1:** An event element is collapsed by default
 **Given** user have a list of all events
 **When** the user is in the main page searching for events
@@ -81,6 +75,12 @@ So that I can track my events and organize my time.
 
 **SPECIFY NUMBER OF EVENTS**
 
+**User Story**
+
+As user,
+I should be able to **specify the number of events**.
+So that I can have an overview about how many events are active in that search.
+
 **Scenario 1:** When user hasn’t specified a number, 32 is the default number.
 **Given** user have a list of all events
 **When** user is choosing the city to see all the events
@@ -93,6 +93,12 @@ So that I can track my events and organize my time.
 
 **USE THE APP WHEN OFFLINE**
 
+**User Story**
+
+As user,
+I should be able to **have the app available offline**.
+So that I can use the app without internet.
+
 **Scenario 1:** Show cached data when there’s no internet connection.
 **Given** when no internet connection
 **When** user try to search for new events
@@ -104,6 +110,12 @@ So that I can track my events and organize my time.
 **Then** Display a error message showing that the user have no internet connection available
 
 **DATA VISUALIZATION**
+
+**User Story**
+
+As user,
+I should be able to **display a chart showing the number of upcoming events by city.**
+So that I can track my events and organize my time.
 
 **Scenario 1:** Show a chart with the number of upcoming events in each city.
 **Given** when is in the home page

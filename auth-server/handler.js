@@ -29,13 +29,8 @@ const oAuth2Client = new google.auth.OAuth2(
   redirect_uris[0]
 );
 
-/**
- *
- * The first step in the OAuth process is to generate a URL so users can log in with
- * Google and be authorized to see your calendar events data. After logging in, they’ll receive a code
- * as a URL parameter.
- *
- */
+// getAuthURL func
+
 module.exports.getAuthURL = async () => {
   /**
    *
@@ -60,6 +55,8 @@ module.exports.getAuthURL = async () => {
     })
   };
 };
+
+// getAccessToken func
 
 module.exports.getAccessToken = async (event) => {
   // The values used to instantiate the OAuthClient are at the top of the file
@@ -100,6 +97,63 @@ module.exports.getAccessToken = async (event) => {
       console.error(err);
       return {
         statusCode: 500,
+        body: JSON.stringify(err)
+      };
+    });
+};
+
+// getCalendarEvents func
+
+module.exports.getCalendarEvents = async (event) => {
+  const oAuth2Client = new google.auth.OAuth2(
+    client_id,
+    client_secret,
+    redirect_uris[0]
+  );
+
+  const access_token = decodeURIComponent(
+    `${event.pathParameters.access_token}`
+  );
+
+  //Set the access token as credentials
+  oAuth2Client.setCredentials({ access_token });
+
+  return new Promise((resolve, reject) => {
+    calendar.events.list(
+      {
+        calendarId: calendar_id,
+        auth: oAuth2Client,
+        timeMin: new Date().toISOString(),
+        singleEvents: true,
+        orderBy: 'startTime'
+      },
+      (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
+        }
+      }
+    );
+  })
+    .then((results) => {
+      // Respond with OAuth token
+      return {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true
+        },
+        body: JSON.stringify({ events: results.data.items })
+      };
+    })
+    .catch((err) => {
+      return {
+        statusCode: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true
+        },
         body: JSON.stringify(err)
       };
     });

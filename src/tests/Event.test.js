@@ -41,4 +41,34 @@ describe('Event /> component', () => {
   test('renders collapsed state as default', () => {
     expect(EventWrapper.state('collapsed')).toBe(true);
   });
+
+  test('render details, when clicking button show details', () => {
+    const detailsButton = EventWrapper.find('button.details-button');
+    expect(detailsButton.text()).toBe('show details');
+    expect(EventWrapper.find('h2.about')).toHaveLength(0);
+    expect(EventWrapper.find('a.link')).toHaveLength(0);
+    expect(EventWrapper.find('p.description')).toHaveLength(0);
+    detailsButton.simulate('click');
+    expect(EventWrapper.state('collapsed')).toBe(false);
+  });
+
+  test('collapse details, when clicking hide details', () => {
+    EventWrapper.setState({ collapsed: false });
+    const detailsButton = EventWrapper.find('button.details-button');
+    const aboutHeader = EventWrapper.find('h2.about');
+    const link = EventWrapper.find('a.link');
+    const description = EventWrapper.find('p.description');
+
+    expect(detailsButton.text()).toBe('hide details');
+    expect(aboutHeader).toHaveLength(1);
+    expect(aboutHeader.text()).toBe('About event:');
+    expect(link).toHaveLength(1);
+    expect(link.text()).toBe('See details on Google Calendar');
+    expect(link.prop('href')).toBe(event.htmlLink);
+    expect(description).toHaveLength(1);
+    expect(description.text()).toBe(event.description);
+
+    detailsButton.simulate('click');
+    expect(EventWrapper.state('collapsed')).toBe(true);
+  });
 });

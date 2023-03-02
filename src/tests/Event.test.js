@@ -25,4 +25,10 @@ describe('Event /> component', () => {
     expect(eventStart).toHaveLength(1);
     expect(eventStart.text()).toBe(new Date(event.start.dateTime).toString());
   });
+
+  test('renders location details', () => {
+    const eventLocation = EventWrapper.find('p.event-location');
+    expect(eventLocation).toHaveLength(1);
+    expect(eventLocation.text()).toBe(`@${event.summary} | ${event.location}`);
+  });
 });

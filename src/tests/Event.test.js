@@ -31,4 +31,14 @@ describe('Event /> component', () => {
     expect(eventLocation).toHaveLength(1);
     expect(eventLocation.text()).toBe(`@${event.summary} | ${event.location}`);
   });
+
+  test('renders button show details, when details collapsed', () => {
+    const detailsButton = EventWrapper.find('button.details-button');
+    expect(detailsButton).toHaveLength(1);
+    expect(detailsButton.text()).toBe('show details');
+  });
+
+  test('renders collapsed state as default', () => {
+    expect(EventWrapper.state('collapsed')).toBe(true);
+  });
 });

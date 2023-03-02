@@ -20,8 +20,9 @@ describe('Event /> component', () => {
     expect(summary.text()).toBe(event.summary);
   });
 
-  test('renders the description', () => {
-    const description = EventWrapper.find('.description');
-    expect(description).toHaveLength(1);
+  test('renders the start details', () => {
+    const eventStart = EventWrapper.find('p.event-start');
+    expect(eventStart).toHaveLength(1);
+    expect(eventStart.text()).toBe(new Date(event.start.dateTime).toString());
   });
 });

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678294542922" clover="3.2.0">
-  <project timestamp="1678294542922" name="All files">
+<coverage generated="1678294839626" clover="3.2.0">
+  <project timestamp="1678294839626" name="All files">
     <metrics statements="51" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="11" coveredmethods="0" elements="84" coveredelements="0" complexity="0" loc="51" ncloc="51" packages="1" files="1" classes="1"/>
     <file name="api.js" path="/Users/ruiafonso/Desktop/CF Front end/TASK 4/meet/src/api.js">
       <metrics statements="51" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="11" coveredmethods="0"/>
@@ -51,10 +51,10 @@
       <line num="83" count="0" type="stmt"/>
       <line num="84" count="0" type="stmt"/>
       <line num="85" count="0" type="stmt"/>
-      <line num="89" count="0" type="stmt"/>
       <line num="91" count="0" type="stmt"/>
-      <line num="93" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="95" count="0" type="stmt"/>
+      <line num="93" count="0" type="stmt"/>
+      <line num="95" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="97" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>

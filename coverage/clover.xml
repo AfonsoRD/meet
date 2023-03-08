@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678294436952" clover="3.2.0">
-  <project timestamp="1678294436952" name="All files">
-    <metrics statements="50" coveredstatements="0" conditionals="20" coveredconditionals="0" methods="14" coveredmethods="0" elements="84" coveredelements="0" complexity="0" loc="50" ncloc="50" packages="1" files="2" classes="2"/>
-    <file name="App.js" path="/Users/ruiafonso/Desktop/CF Front end/TASK 4/meet/src/App.js">
-      <metrics statements="12" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="7" coveredmethods="0"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="16" count="0" type="stmt"/>
-      <line num="17" count="0" type="stmt"/>
-      <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="19" count="0" type="stmt"/>
-      <line num="25" count="0" type="stmt"/>
-      <line num="28" count="0" type="stmt"/>
-      <line num="29" count="0" type="stmt"/>
-      <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="33" count="0" type="stmt"/>
-      <line num="34" count="0" type="stmt"/>
-      <line num="41" count="0" type="stmt"/>
-    </file>
+<coverage generated="1678294542922" clover="3.2.0">
+  <project timestamp="1678294542922" name="All files">
+    <metrics statements="51" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="11" coveredmethods="0" elements="84" coveredelements="0" complexity="0" loc="51" ncloc="51" packages="1" files="1" classes="1"/>
     <file name="api.js" path="/Users/ruiafonso/Desktop/CF Front end/TASK 4/meet/src/api.js">
-      <metrics statements="38" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <metrics statements="51" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="11" coveredmethods="0"/>
       <line num="5" count="0" type="stmt"/>
       <line num="6" count="0" type="stmt"/>
       <line num="9" count="0" type="stmt"/>
@@ -57,6 +42,19 @@
       <line num="62" count="0" type="stmt"/>
       <line num="64" count="0" type="cond" truecount="0" falsecount="2"/>
       <line num="66" count="0" type="stmt"/>
+      <line num="69" count="0" type="stmt"/>
+      <line num="70" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="72" count="0" type="stmt"/>
+      <line num="76" count="0" type="stmt"/>
+      <line num="78" count="0" type="stmt"/>
+      <line num="79" count="0" type="stmt"/>
+      <line num="83" count="0" type="stmt"/>
+      <line num="84" count="0" type="stmt"/>
+      <line num="85" count="0" type="stmt"/>
+      <line num="89" count="0" type="stmt"/>
+      <line num="91" count="0" type="stmt"/>
+      <line num="93" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="95" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>

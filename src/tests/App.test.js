@@ -5,6 +5,7 @@ import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import NumberOfEvents from '../NumberOfEvents';
+import axios from 'axios';
 // DATA
 import { mockData } from '../mock-data';
 import { extractLocations, getEvents } from '../api';

@@ -1,28 +1,28 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import App from '../App';
 import NumberOfEvents from '../NumberOfEvents';
 
-describe('<NumberOfEvents /> component', () => {
-  let NumberOfEventsWrapper;
+describe('<NumberOfEvents />', () => {
+  let NumberOfEventsWrapper, numInput;
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}} />);
+    numInput = NumberOfEventsWrapper.find('input.num-input');
   });
 
-  test('renders the component', () => {
+  test('renders the components', () => {
     expect(NumberOfEventsWrapper).toBeDefined();
+    expect(numInput).toBeDefined();
   });
 
   test('render default number 32', () => {
-    expect(NumberOfEventsWrapper.find('input.num').prop('type')).toBe('number');
+    expect(numInput.prop('type')).toBe('number');
     expect(NumberOfEventsWrapper.state('num')).toBe(32);
   });
 
-  test('user changes value for rendered number of events', () => {
+  test('user cha  nges value for rendered number of events', () => {
     expect(NumberOfEventsWrapper.state('num')).toBe(32);
-
-    NumberOfEventsWrapper.find('input.num').simulate('change', {
-      target: { value: 24 }
-    });
+    numInput.simulate('change', { target: { value: 24 } });
     expect(NumberOfEventsWrapper.state('num')).toBe(24);
   });
 });

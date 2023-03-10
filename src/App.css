@@ -1,12 +1,49 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+:root {
+  /* change these top variables to change the theme! */
+  --top-bar-color: #20242A;
+  --primary-color: #40E0FD;
+  --bg-color: #282C34;
+}
+
+:root * {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 
 .App {
+  width: 100%;
   text-align: center;
+  justify-content: space-between;
+  background-color: var(--bg-color);
   padding: 2% 5%;
 }
 
-.App * {
-  box-sizing: border-box;
+.top-bar {
+  display: flex;
+  padding: 1% 1%;
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  background-color: var(--top-bar-color);
+}
+
+.app-tittle {
+  display: flex;
+  color: var(--primary-color);
+}
+
+.city-search-field {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  align-items: flex-end;
+}
+
+.event-num {
+  color: #eee;
 }
 
 ul {
@@ -14,8 +51,8 @@ ul {
   list-style: none;
 }
 
-p {
-  margin: 5px 0;
+input {
+  width: 120px;
 }
 
 .display-none {
@@ -45,10 +82,9 @@ input[type="number"] {
 .CitySearch {
   display: flex;
   flex-direction: column;
-  flex-basis: 300px;
-  max-width: 300px;
-  margin: auto;
+  margin-right: 16px;
   position: relative;
+  justify-content: flex-end;
 }
 
 .suggestions {
@@ -78,23 +114,46 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
-.event {
+.events {
+  display: flex;
+  flex-direction: column;
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+
+}
+
+.Event {
+  border: 1px solid var(--gray50);
+  border-radius: .35em;
+  background: var(--white-alpha);
+  margin: .25em .75em;
+  padding: .25em .85em .5em;
+  background-color: #ccc;
+  color: black;
+}
+
+.Event.expanded {
+  background: var(--heading-text);
+  color: black;
+  background-color: #fff;
+  box-shadow: 0 .2em hsla(0, 0%, 100%, 40%);
 }
 
 .details-btn {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
   right: 5px;
   bottom: 5px;
   padding: 5px 8px;
-  border-radius: 4px;
   outline: none;
   cursor: pointer;
+  color: white;
+  background-color: #7a7876;
+  border-radius: 30px;
 }
 
 .name {
@@ -131,8 +190,9 @@ input[type="number"] {
 }
 
 .Alert {
-  position: fixed;
-  top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .data-vis-wrapper {
@@ -207,7 +267,18 @@ input[type="number"] {
   font-family: "Roboto";
 }
 
+label {
+  color: rgb(80, 80, 80);
+}
 
+label .num {
+  margin-left: 16px;
+}
+
+.alert-centered {
+  justify-content: center;
+  align-items: center;
+}
 
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
@@ -220,4 +291,17 @@ input[type="number"] {
     min-width: auto;
     margin: 0 auto;
   }
+}
+
+@media all and (max-width: 500px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+  h1 {
+    font-size: 22px;
+  }
+
 }

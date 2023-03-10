@@ -12,14 +12,12 @@ class Event extends Component {
     const { collapsed } = this.state;
 
     return (
-      <div>
+      <div className={`Event ${this.state.collapsed ? '' : 'expanded'}`}>
         <h1 className='summary'>{event.summary}</h1>
         <p className='event-start'>
           {new Date(event.start.dateTime).toString()}
         </p>
-        <p className='event-location'>
-          {`@${event.summary} | ${event.location}`}
-        </p>
+        <p className='location'>{`@${event.summary} | ${event.location}`}</p>
 
         {!collapsed && (
           <>

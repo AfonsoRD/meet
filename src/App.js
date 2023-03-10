@@ -16,9 +16,9 @@ class App extends Component {
 
   async componentDidMount() {
     this.mounted = true;
-    getEvents().then((e) => {
+    getEvents().then((events) => {
       if (this.mounted) {
-        events = e.slice(0, this.state.eventCount);
+        events = events.slice(0, this.state.eventCount);
         this.setState({ events, locations: extractLocations(events) });
       }
     });

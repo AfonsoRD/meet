@@ -7,37 +7,37 @@ class Event extends Component {
       collapsed: !prevState.collapsed
     }));
   };
+
   render() {
     const { event } = this.props;
     const { collapsed } = this.state;
+    const dateString = new Date(event.start.dateTime).toGMTString();
 
     return (
       <div className={`Event ${this.state.collapsed ? '' : 'expanded'}`}>
-        <h1 className='summary'>{event.summary}</h1>
-        <p className='event-start'>
-          {new Date(event.start.dateTime).toString()}
-        </p>
-        <p className='location'>{`@${event.summary} | ${event.location}`}</p>
-
+        <h2 className='summary'>{event.summary}</h2>
+        <h4 className='start'>{dateString}</h4>
+        <h4 className='location'>{`${event.location}`}</h4>
+        <button
+          className='details-button'
+          onClick={this.toggleDetails}
+        >
+          {collapsed ? 'show' : 'hide'} details
+        </button>
         {!collapsed && (
-          <>
-            <h2 className='about'>About event:</h2>
+          <div className='details'>
+            <h3 className='about'>About this event:</h3>
             <a
               className='link'
               href={event.htmlLink}
+              target='_blank'
+              rel='noopener noreferrer'
             >
               See details on Google Calendar
             </a>
             <p className='description'>{event.description}</p>
-          </>
+          </div>
         )}
-
-        <button
-          className='details-button'
-          onClick={() => this.toggleDetails()}
-        >
-          {collapsed ? 'show' : 'hide'} details
-        </button>
       </div>
     );
   }

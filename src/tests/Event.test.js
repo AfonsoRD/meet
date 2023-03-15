@@ -23,14 +23,14 @@ describe('<Event /> component', () => {
 
   test('renders the start details', () => {
     const eventStart = EventWrapper.find('.start');
-    const dateString = new Date(event.start.dateTime).toGMTString();
+    const dateString = new Date(event.start.dateTime).toString();
     expect(eventStart).toBeDefined();
     expect(eventStart.text()).toBe(dateString);
   });
 
   test('renders location details', () => {
     const eventLocation = EventWrapper.find('.location');
-    const locationString = event.location;
+    const locationString = `@${event.summary} | ${event.location}`;
     expect(eventLocation).toBeDefined();
     expect(eventLocation.text()).toBe(`${locationString}`);
   });

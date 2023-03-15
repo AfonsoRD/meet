@@ -2,7 +2,9 @@
   /* change these top variables to change the theme! */
   --top-bar-color: #20242A;
   --primary-color: #40E0FD;
+  --shadow-color: #40e1fd8d;
   --bg-color: #282C34;
+  --border-color: #ccc
 }
 
 :root * {
@@ -122,24 +124,32 @@ input[type="number"] {
   width: 120px;
 }
 
-.Event {
+.events {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
-  text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: var(--white-alpha);
   margin-bottom: 10px;
   padding: 10px 10px 35px;
-  background-color: #ccc;
   position: relative;
+  text-align: left;
+}
+
+.Event {
+  background: var(--white-alpha);
+  background-color: var(--border-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 0.35em;
+  color: black;
+  margin: 10px;
+  padding: 4px 14px 8px;
 }
 
 .Event.expanded {
   background: var(--heading-text);
   color: black;
-  background-color: #fff;
-  box-shadow: 0 .2em hsla(0, 0%, 100%, 40%);
+  background-color: white;
+  box-shadow: 0 .2em var(--shadow-color);
 }
 
 .name {

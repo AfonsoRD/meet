@@ -84,5 +84,4 @@ const mockData = [
 ];
 
 JSON.parse(JSON.stringify(mockData));
-
 export { mockData };

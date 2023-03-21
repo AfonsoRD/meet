@@ -44,8 +44,14 @@
   align-items: flex-end;
 }
 
+.event-search {
+  color: #eee;
+  text-align: left;
+}
+
 .event-num {
   color: #eee;
+  text-align: left;
 }
 
 ul {

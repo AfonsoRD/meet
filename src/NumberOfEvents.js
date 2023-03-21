@@ -12,7 +12,7 @@ class NumberOfEvents extends Component {
     if (inputValue < 0 || inputValue === 0 || inputValue === '0')
       inputValue = 0;
     if (!inputValue) errorText = 'Select at least 1 event';
-    else if (inputValue >= 50) {
+    else if (inputValue >= 51) {
       errorText = '50 max. events per page';
       inputValue = 50;
     }

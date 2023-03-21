@@ -295,15 +295,20 @@ label .num {
   }
 }
 
-@media all and (max-width: 500px) {
+@media all and (min-width: 360px) and (max-width: 600px) {
   .top-bar {
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .city-search-field {
+    display: inline-block;
   }
 
 
   h1 {
-    font-size: 22px;
+    font-size: 28px;
   }
 
 }

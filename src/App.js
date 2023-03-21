@@ -5,13 +5,21 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
+import { InfoAlert } from './Alert';
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
     seletedLocation: 'all',
-    eventCount: 32
+    eventCount: 32,
+    infoText: ''
+  };
+
+  networkStatus = () => {
+    this.setState({
+      infoText: navigator.online ? 'Status: online' : 'Status: offline'
+    });
   };
 
   async componentDidMount() {
@@ -22,6 +30,10 @@ class App extends Component {
         this.setState({ events, locations: extractLocations(events) });
       }
     });
+
+    window.addEventListener('online', this.networkStatus);
+    window.addEventListener('offline', this.networkStatus);
+    this.networkStatus();
   }
 
   componentWillUnmount() {
@@ -73,6 +85,9 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
+        <div className='alert-status'>
+          <InfoAlert text={this.state.infoText} />
+        </div>
         <div className='top-bar'>
           <h1 className='app-tittle'>LEET - Learn and Meet App</h1>
           <div className='city-search-field'>

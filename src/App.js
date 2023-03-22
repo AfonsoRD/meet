@@ -4,7 +4,8 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations } from './api';
+import WelcomeScreen from './WelcomeScreen';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { InfoAlert } from './Alert';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
     locations: [],
     seletedLocation: 'all',
     eventCount: 32,
+    showWelcomeScreen: undefined,
     infoText: ''
   };
 
@@ -24,12 +26,20 @@ class App extends Component {
 
   async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        events = events.slice(0, this.state.eventCount);
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
+
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events, locations: extractLocations(events) });
+        }
+      });
+    }
 
     window.addEventListener('online', this.networkStatus);
     window.addEventListener('offline', this.networkStatus);
@@ -83,6 +93,8 @@ class App extends Component {
   };
 
   render() {
+    if (this.state.showWelcomeScreen === undefined)
+      return <div className='App' />;
     return (
       <div className='App'>
         <div className='alert-status'>
@@ -104,6 +116,12 @@ class App extends Component {
         <div className='events'>
           <EventList events={this.state.events} />
         </div>
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
+        />
       </div>
     );
   }

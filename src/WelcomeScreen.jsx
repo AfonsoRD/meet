@@ -3,7 +3,7 @@ import './WelcomeScreen.css';
 function WelcomeScreen(props) {
   return props.showWelcomeScreen ? (
     <div className='WelcomeScreen'>
-      <h1>Welcome to the Meet app</h1>
+      <h1>Welcome to LEET - learn and meet App</h1>
       <h4>
         Log in to see upcoming events around the world for full-stack developers
       </h4>

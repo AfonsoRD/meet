@@ -51,7 +51,7 @@ class CitySearch extends Component {
         <InfoAlert text={this.state.infoText} />
         <label
           className='form'
-          for='city-form'
+          htmlFor='city-form'
         >
           {' '}
           <h4>Search for a city</h4>{' '}

@@ -28,7 +28,7 @@ class NumberOfEvents extends Component {
         <ErrorAlert text={this.state.errorText} />
         <label
           className='form'
-          for='num-form'
+          htmlFor='num-form'
         >
           {' '}
           <h4>Events list</h4>{' '}

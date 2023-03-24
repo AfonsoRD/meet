@@ -153,6 +153,13 @@ input[type="number"] {
   color: black;
   margin: 10px;
   padding: 4px 14px 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.Event:hover {
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
 }
 
 .Event.expanded {
@@ -205,6 +212,33 @@ input[type="number"] {
 
 .alert-status {
   background: linear-gradient(90deg, var(--light-grey), transparent);
+}
+
+.data-vis-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--top-bar-color);
+  border: 1px solid var(--light-grey);
+  border-radius: 0.35em;
+  margin-bottom: 40px;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.data-vis-wrapper:hover {
+  border: 2px solid var(--light-grey);
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.data-vis-wrapper .recharts-responsive-container {
+  min-width: 100%;
+  display: flex;
+}
+
+.recharts-surface {
+  overflow: visible;
 }
 
 @media only screen and (min-width: 992px) {

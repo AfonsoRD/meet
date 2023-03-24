@@ -14,6 +14,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
+import EventGenre from './EventGenre';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { InfoAlert } from './Alert';
 
@@ -124,8 +125,8 @@ class App extends Component {
             />
           </div>
         </div>
-
-        <div className='events'>
+        <div className='data-vis-wrapper'>
+          <EventGenre events={events} />
           <ResponsiveContainer height={400}>
             <ScatterChart>
               <CartesianGrid />
@@ -147,7 +148,9 @@ class App extends Component {
               />
             </ScatterChart>
           </ResponsiveContainer>
+        </div>
 
+        <div className='events'>
           <EventList events={events} />
         </div>
         <WelcomeScreen

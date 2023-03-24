@@ -1,12 +1,4 @@
 import React, { Component } from 'react';
-import './nprogress.css';
-import './App.css';
-import EventList from './EventList';
-import CitySearch from './CitySearch';
-import NumberOfEvents from './NumberOfEvents';
-import WelcomeScreen from './WelcomeScreen';
-import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
-import { InfoAlert } from './Alert';
 import {
   ScatterChart,
   Scatter,
@@ -16,12 +8,20 @@ import {
   Tooltip,
   ResponsiveContainer
 } from 'recharts';
+import './nprogress.css';
+import './App.css';
+import EventList from './EventList';
+import CitySearch from './CitySearch';
+import NumberOfEvents from './NumberOfEvents';
+import WelcomeScreen from './WelcomeScreen';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
+import { InfoAlert } from './Alert';
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
-    seletedLocation: 'all',
+    selectedLocation: 'all',
     eventCount: 32,
     showWelcomeScreen: undefined,
     infoText: ''
@@ -60,7 +60,7 @@ class App extends Component {
   }
 
   updateEvents = (location, inputNumber) => {
-    const { eventCount, seletedLocation } = this.state;
+    const { eventCount, selectedLocation } = this.state;
     if (location) {
       getEvents().then((events) => {
         const locationEvents =
@@ -71,15 +71,15 @@ class App extends Component {
 
         this.setState({
           events: eventsToShow,
-          seletedLocation: location
+          selectedLocation: location
         });
       });
     } else {
       getEvents().then((events) => {
         const locationEvents =
-          seletedLocation === 'all'
+          selectedLocation === 'all'
             ? events
-            : events.filter((event) => event.location === seletedLocation);
+            : events.filter((event) => event.location === selectedLocation);
         const eventsToShow = locationEvents.slice(0, inputNumber);
         this.setState({
           events: eventsToShow,
@@ -104,6 +104,8 @@ class App extends Component {
   render() {
     if (this.state.showWelcomeScreen === undefined)
       return <div className='App' />;
+
+    const { locations, eventCount, events, showWelcomeScreen } = this.state;
     return (
       <div className='App'>
         <div className='alert-status'>
@@ -113,43 +115,43 @@ class App extends Component {
           <h1 className='app-tittle'>LEET - Learn and Meet App</h1>
           <div className='city-search-field'>
             <CitySearch
-              locations={this.state.locations}
+              locations={locations}
               updateEvents={this.updateEvents}
             />
             <NumberOfEvents
-              eventCount={this.state.eventCount}
+              eventCount={eventCount}
               updateEvents={this.updateEvents}
             />
           </div>
         </div>
-        <ResponsiveContainer height={400}>
-          <ScatterChart>
-            <CartesianGrid />
-            <XAxis
-              type='category'
-              dataKey='city'
-              name='city'
-            />
-            <YAxis
-              type='number'
-              dataKey='number'
-              name='number of events'
-              allowDecimals={false}
-            />
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-            <Scatter
-              data={this.getData()}
-              fill='#8884d8'
-            />
-          </ScatterChart>
-        </ResponsiveContainer>
 
         <div className='events'>
-          <EventList events={this.state.events} />
-        </div>
+          <ResponsiveContainer height={400}>
+            <ScatterChart>
+              <CartesianGrid />
+              <XAxis
+                type='category'
+                dataKey='city'
+                name='city'
+              />
+              <YAxis
+                type='number'
+                dataKey='number'
+                name='number of events'
+                allowDecimals={false}
+              />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter
+                data={this.getData()}
+                fill='#40E0FD'
+              />
+            </ScatterChart>
+          </ResponsiveContainer>
 
+          <EventList events={events} />
+        </div>
         <WelcomeScreen
-          showWelcomeScreen={this.state.showWelcomeScreen}
+          showWelcomeScreen={showWelcomeScreen}
           getAccessToken={() => {
             getAccessToken();
           }}

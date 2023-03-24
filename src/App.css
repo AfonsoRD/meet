@@ -87,6 +87,10 @@ input[type="number"] {
   width: 250px;
 }
 
+.form {
+  color: var(--light-grey);
+}
+
 .CitySearch {
   display: flex;
   flex-direction: column;

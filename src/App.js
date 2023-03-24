@@ -7,6 +7,15 @@ import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { InfoAlert } from './Alert';
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer
+} from 'recharts';
 
 class App extends Component {
   state = {
@@ -113,9 +122,32 @@ class App extends Component {
             />
           </div>
         </div>
+        <ResponsiveContainer height={400}>
+          <ScatterChart>
+            <CartesianGrid />
+            <XAxis
+              type='category'
+              dataKey='city'
+              name='city'
+            />
+            <YAxis
+              type='number'
+              dataKey='number'
+              name='number of events'
+              allowDecimals={false}
+            />
+            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+            <Scatter
+              data={this.getData()}
+              fill='#8884d8'
+            />
+          </ScatterChart>
+        </ResponsiveContainer>
+
         <div className='events'>
           <EventList events={this.state.events} />
         </div>
+
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {

@@ -52,7 +52,7 @@ class CitySearch extends Component {
         <InfoAlert text={this.state.infoText} />
         <h4 className='event-search'>Search for a city:</h4>
         <input
-          type='text'
+          type='form'
           className='city'
           value={this.state.query}
           onChange={this.handleInputChanged}

@@ -34,6 +34,7 @@ o.svg'
       <a
         href='https://afonsord.github.io/meet/privacy.html'
         rel='nofollow noopener'
+        className='privacy_text'
       >
         Privacy policy
       </a>

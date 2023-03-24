@@ -20,7 +20,7 @@ class App extends Component {
 
   networkStatus = () => {
     this.setState({
-      infoText: navigator.online ? 'Status: online' : 'Status: offline'
+      infoText: navigator.onLine ? 'Status: online' : 'Status: offline'
     });
   };
 

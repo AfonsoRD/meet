@@ -132,6 +132,8 @@ So that I can track my events and organize my time.
 
 #### Testing Tools
 
-Lighthouse’s PWA
+- Lighthouse’s PWA
+- Jest
+- Puppeteer
 
 ###### [Meet app](https://afonsord.github.io/meet)

@@ -27,14 +27,16 @@ class NumberOfEvents extends Component {
       <div className='NumverOfEvents'>
         <ErrorAlert text={this.state.errorText} />
         <h4 className='event-num'>Events list:</h4>
-        <input
-          className='num-input'
-          type='form'
-          value={num}
-          onChange={(event) => {
-            this.handleInputChanged(event);
-          }}
-        />
+        <label>
+          <input
+            className='num-input'
+            type='number'
+            value={num}
+            onChange={(event) => {
+              this.handleInputChanged(event);
+            }}
+          />
+        </label>
       </div>
     );
   }

@@ -50,14 +50,16 @@ class CitySearch extends Component {
     return (
       <div className='CitySearch'>
         <InfoAlert text={this.state.infoText} />
-        <h4 className='event-search'>Search for a city:</h4>
-        <input
-          type='form'
-          className='city'
-          value={this.state.query}
-          onChange={this.handleInputChanged}
-          onFocus={this.handleInputFocus}
-        />
+        <label>
+          <input
+            type='text'
+            className='city'
+            value={this.state.query}
+            placeholder='Search for a city'
+            onChange={this.handleInputChanged}
+            onFocus={this.handleInputFocus}
+          />
+        </label>
         <ul
           className='suggestions'
           style={this.state.showSuggestions ? {} : { display: 'none' }}

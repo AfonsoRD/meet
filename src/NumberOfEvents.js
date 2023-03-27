@@ -22,7 +22,7 @@ class NumberOfEvents extends Component {
   };
 
   componentDidMount() {
-    this.setState({ num: this.props.num || 32 });
+    this.setState({ num: this.props.eventCount || 32 });
   }
 
   render() {

@@ -4,6 +4,10 @@ import { ErrorAlert } from './Alert';
 class NumberOfEvents extends Component {
   state = { num: 32, errorText: '' };
 
+  componentDidMount() {
+    this.setState({ num: this.props.num || 32 });
+  }
+
   handleInputChanged = (event, props) => {
     let inputValue = event.target.value;
     let errorText;
